@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+
+{% block content %}
+    {{ super() }}
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    {% for message in get_flashed_messages() %}
+        {% if message == '小了' %}
+            <h3 class="text-center text-info">{{ message }}</h3>
+        {% elif message == '大了' %}
+            <h3 class="text-center text-danger">{{ message }}</h3>
+        {% endif %}
+    {% endfor %}
+
+    <div class="container text-center">
+    {{ wtf.quick_form(form) }}
+    </div>
+{% endblock %}
